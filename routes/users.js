@@ -35,8 +35,9 @@ router.post('/login', function(req, res, next) {
       }
       if(!user){
         console.log(user)
+        return res.send(400).status('error finding uer');
       }
-
+      
       var token = user.generateToken();
       res.cookie('mytoken', token).send();
       
